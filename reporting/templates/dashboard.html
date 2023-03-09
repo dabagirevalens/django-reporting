@@ -43,12 +43,16 @@
     <div class="card">
       <h3>{{business.name}}</h3>
       <span class="head">
-        <span class="title">Jobs amount:</span>
+        <span class="title">Jobs LI amount:</span>
         {{business.total_job_line_item_amount}}</span
       >
       <span class="head"
-        ><span class="title">Unpaid Invoives:</span>
+        ><span class="title">Unpaid JLI Invoives amount:</span>
         {{business.total_job_line_item_upaid_invoice_amount}}</span
+      >
+      <span class="head"
+        ><span class="title">Invoices LI amount:</span>
+        {{business.total_invoice_line_item_amount}}</span
       >
       {% if business.invoices.count > 0 %}
       <div class="invoices">
