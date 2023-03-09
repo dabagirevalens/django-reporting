@@ -1,0 +1,66 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="dashboard">
+  <div class="filter">
+    <h3>Job line Item remaining invoice amount:</h3>
+    <form
+      id="searchForm"
+      class="form"
+      action="{% url 'dashboard' %}"
+      method="get"
+    >
+      <div class="form__field">
+        <label for="formInput#min">Min amount</label>
+        <input
+          class="input input--text"
+          id="formInput#max"
+          type="number"
+          name="min"
+          placeholder="0"
+          value="{{ min }}"
+        />
+      </div>
+      <div class="form__field">
+        <label for="formInput#max">Max amount</label>
+        <input
+          class="input input--text"
+          id="formInput#max"
+          type="number"
+          name="max"
+          placeholder="10000"
+          value="{{ max }}"
+        />
+      </div>
+
+      <button>SEND</button>
+    </form>
+  </div>
+
+  <hr />
+
+  <div class="data">
+    {% for business in businesses %}
+    <div class="card">
+      <h3>{{business.name}}</h3>
+      <span class="head">
+        <span class="title">Jobs amount:</span>
+        {{business.total_job_line_item_amount}}</span
+      >
+      <span class="head"
+        ><span class="title">Unpaid Invoives:</span>
+        {{business.total_job_line_item_upaid_invoice_amount}}</span
+      >
+      {% if business.invoices.count > 0 %}
+      <div class="invoices">
+        <h6>Invoices:</h6>
+        {% for invoice in business.invoices %}
+        <span>{{invoice.id}}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
