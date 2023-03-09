@@ -71,7 +71,7 @@ def businesses(request):
     filtered_businesses = []
     if min != '' and max != '':
         for b in businesses:
-            if b.total_job_line_item_amount >= float(min) and b.total_job_line_item_amount <= float(max):
+            if b.total_job_line_item_upaid_invoice_amount >= float(min) and b.total_job_line_item_upaid_invoice_amount <= float(max):
                 filtered_businesses.append(b)
     if min and max:
         businesses = filtered_businesses
